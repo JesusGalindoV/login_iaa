@@ -17,8 +17,9 @@ if(empty($_SESSION['tipo'])){
 </head>
 <body>
 
-<h1>Bienvenid@ <?php echo $_SESSION["nombre"] ?> tu rol es: <?php echo $_SESSION["tipo"] ?> </h1>
+<h1>Bienvenid@ <?php echo $_SESSION["nombre"] ?> tu rol es: <?php echo $_SESSION["tipo"] ?> tu verificado es: <?php echo $_SESSION["verificado"] ?> </h1>
 
+<h2>tu codigo es: <?php echo $_SESSION["codigo"] ?></h2>
 
 <a href="../../controllers/logout.php">Salir</a>
 

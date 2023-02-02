@@ -29,11 +29,17 @@ $(document).on('submit','#formlg', function(event) {
   .done(function(respuesta) {
     console.log(respuesta);
     if(!respuesta.error){
+
       if(respuesta.tipo == 'admin'){
+
         location.href = './main_app/admin/';
+
       } else if(respuesta.tipo == 'usuario'){
+
         location.href = './main_app/usuario/';
+
       }
+
     }else {
       $('.error').slideDown('slow');
       setTimeout(function(){
@@ -51,8 +57,6 @@ $(document).on('submit','#formlg', function(event) {
 });
 
 });
-
-
 
 particlesJS('particles-js',
   

@@ -5,10 +5,14 @@ use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
 require '../vendor/autoload.php';
+require '../main_app/conexion.php';
+require 'verification_code_generator.php';
+
+session_start();
 
 $mail = new PHPMailer(true);
 
-$verification_code = rand(999,10000);
+$verification_code = code();
 
 try {
     //Server settings
@@ -37,5 +41,3 @@ try {
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }
-
-
