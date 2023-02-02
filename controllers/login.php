@@ -20,7 +20,7 @@ if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQU
 
         if($resultado->num_rows == 1){
             $datos = $resultado->fetch_assoc();
-            echo json_encode(array('error' => false, 'tipo' => $datos['tipo_usuario']));
+            echo json_encode(array('error' => false, 'tipo' => $datos['tipo_usuario'], 'verificado' => $datos['verificado']));
 
             $_SESSION['nombre'] = $datos['Nombre'];
             $_SESSION['tipo'] = $datos['tipo_usuario'];

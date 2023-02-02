@@ -32,11 +32,19 @@ $(document).on('submit','#formlg', function(event) {
 
       if(respuesta.tipo == 'admin'){
 
-        location.href = './main_app/admin/';
+        if(respuesta.verificado == 1){
+          location.href = './main_app/admin/';
+        }else {
+          location.href = './main_app/views/no-verificado.php';
+        }
 
       } else if(respuesta.tipo == 'usuario'){
 
-        location.href = './main_app/usuario/';
+        if(respuesta.verificado == 1){
+          location.href = './main_app/usuario/';
+        }else {
+          location.href = './main_app/views/no-verificado.php';
+        }
 
       }
 
