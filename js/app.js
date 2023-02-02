@@ -11,7 +11,9 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 /* Otherwise just put the config content (json): */
 
-jQuery(document).on('submit','#formlg', function(event) {
+$(document).ready(function() {
+
+$(document).on('submit','#formlg', function(event) {
   event.preventDefault();
 
   jQuery.ajax({
@@ -20,11 +22,25 @@ jQuery(document).on('submit','#formlg', function(event) {
     dataType: 'json',
     data: $(this).serialize(),
     beforeSend: function() {
+      $('.botonlg').val('Validando...');
 
     }
   })
   .done(function(respuesta) {
-    console.log("success");
+    console.log(respuesta);
+    if(!respuesta.error){
+      if(respuesta.tipo == 'admin'){
+        location.href = './main_app/admin/';
+      } else if(respuesta.tipo == 'usuario'){
+        location.href = './main_app/usuario/';
+      }
+    }else {
+      $('.error').slideDown('slow');
+      setTimeout(function(){
+        $('.error').slideUp('slow');
+      },3000);
+      $('.botonlg').val('Log In');
+    }
   })
   .fail(function(resp) {
     console.log(resp.responseText);
@@ -32,6 +48,8 @@ jQuery(document).on('submit','#formlg', function(event) {
   .always(function() {
     console.log("complete");
   });
+});
+
 });
 
 
