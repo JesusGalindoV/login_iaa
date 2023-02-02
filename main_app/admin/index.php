@@ -23,7 +23,8 @@ if(empty($_SESSION['tipo'])){
 
 <a href="../../controllers/logout.php">Salir</a>
 
-<a href="../../controllers/mailer.php">enviar correo</a>
+<!-- <a href="../../controllers/mailer.php">enviar correo</a> -->
+
 
 
 </body>

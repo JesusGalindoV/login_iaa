@@ -9,7 +9,8 @@
             $nombre = $_SESSION['nombre'];
             $sql = "UPDATE Usuarios SET codigo = '$verification_code' WHERE Nombre = '$nombre' ";
             if($mysqli->query($sql) === TRUE){
-                echo "OK";
+                // echo "OKk";
+                header("Location: ../main_app/views/no-verificado.php");
             }else{
                 echo "ERROR";
             }

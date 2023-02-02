@@ -13,6 +13,7 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 $(document).ready(function() {
 
+// Login
 $(document).on('submit','#formlg', function(event) {
   event.preventDefault();
 
