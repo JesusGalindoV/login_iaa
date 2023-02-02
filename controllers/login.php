@@ -4,7 +4,7 @@ session_start();
 
 if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
     
-    require 'conexion.php';
+    require '../main_app/conexion.php';
     sleep(2);
 
     $mysqli->set_charset("utf8");

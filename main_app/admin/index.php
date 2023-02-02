@@ -20,7 +20,9 @@ if(empty($_SESSION['tipo'])){
 <h1>Bienvenid@ <?php echo $_SESSION["nombre"] ?> tu rol es: <?php echo $_SESSION["tipo"] ?> </h1>
 
 
-<a href="../logout.php">Salir</a>
+<a href="../../controllers/logout.php">Salir</a>
+
+<a href="../../controllers/mailer.php">enviar correo</a>
 
 
 </body>

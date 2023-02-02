@@ -17,7 +17,7 @@ $(document).on('submit','#formlg', function(event) {
   event.preventDefault();
 
   jQuery.ajax({
-    url: 'main_app/login.php',
+    url: 'controllers/login.php',
     type: 'POST',
     dataType: 'json',
     data: $(this).serialize(),
