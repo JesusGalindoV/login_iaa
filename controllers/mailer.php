@@ -37,6 +37,8 @@ use PHPMailer\PHPMailer\Exception;
         // $mail->Body    = 'This is the HTML message body <b>in bold!</b> {$verification_code}';
         $mail->send();
 
+        header("Location: ../index.php");
+
         // echo 'correo enviado';
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
