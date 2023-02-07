@@ -31,6 +31,7 @@
                 <input class="boton-check" type="submit" value="check code">
 
                 <!-- <a class="send-code" href="../../controllers/verify-code.php">test</a> -->
+                <p>¿No tienes un codigo?... Genera uno para validar tu identidad.</p>
                 <a class="send-code" href="../../controllers/mailer.php">Enviar Codigo</a>
             
             </form>
