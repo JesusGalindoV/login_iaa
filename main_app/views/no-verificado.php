@@ -16,7 +16,7 @@
 </head>
 <body>
 
-<h3 class="no-verified"><?php echo $_SESSION["nombre"] ?> NO ESTAS VERIFICADO</h3>
+<h3 class="no-verified"><?php echo $_SESSION["nombre"] ?> NO ESTAS VERIFICADO <?php echo $_SESSION['correo'] ?></h3>
 
 
     <section class="home">
@@ -31,13 +31,20 @@
                 <input class="boton-check" type="submit" value="check code">
 
                 <!-- <a class="send-code" href="../../controllers/verify-code.php">test</a> -->
-                <p>¿No tienes un codigo?... Genera uno para validar tu identidad.</p>
-                <a class="send-code" href="../../controllers/mailer.php">Enviar Codigo</a>
+                <p>Don't have a code?... Generate one to validate your identity.</p>
+                <br>
+                <a class="send-code" href="../../controllers/mailer.php">Send Code</a>
             
             </form>
         </div>
     </section>
 
+    <script>
+        document.body.onclick= function(e){
+            e=window.event? event.srcElement: e.target;
+            if(e.className && e.className.indexOf('send-code')!=-1)alert('Codigo enviado al correo electronico');
+        }
+    </script>
 
 </body>
 </html>

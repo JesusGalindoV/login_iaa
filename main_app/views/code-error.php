@@ -8,12 +8,12 @@
     <link rel="shortcut icon" href="../../img/yoxd.jpg" type="image/jpg"> 
     <link rel="Stylesheet" href="../../css/master.css">
 
-    <title>Verifica tú Identidad</title>
+    <title>Verify your Identity</title>
 </head>
 <body>
 
-<h3 class="code-error">El codigo que haz introducido es incorrecto, intentalo de nuevo</h3>
-<a class="btn-volver" href="no-verificado.php">Volver</a>
+<h3 class="code-error">The code you have entered is incorrect, please try again.</h3>
+<a class="btn-volver" href="no-verificado.php">Back</a>
 
 </body>
 </html>

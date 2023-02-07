@@ -23,7 +23,7 @@ $(document).on('submit','#formlg', function(event) {
     dataType: 'json',
     data: $(this).serialize(),
     beforeSend: function() {
-      $('.botonlg').val('Validando...');
+      $('.botonlg').val('validating...');
 
     }
   })

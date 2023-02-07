@@ -28,7 +28,7 @@ use PHPMailer\PHPMailer\Exception;
         $mail->CharSet = 'UTF-8';
 
         $mail->setFrom('unisierraportal@gmail.com');
-        $mail->addAddress('jesus_galindo29@hotmail.com');
+        $mail->addAddress($_SESSION["correo"]);
 
         $mail->isHTML(true);
         $mail->Subject = 'prueba de correo';
