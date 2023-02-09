@@ -16,15 +16,15 @@ try {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'unisierraportal@gmail.com';
-    $mail->Password   = 'xfctdkqytdxleeay'; 
+    $mail->Username   = 'CORREO_HERE';
+    $mail->Password   = 'PASSWORD_HERE'; 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable implicit TLS encryption                   
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     $mail->CharSet = 'UTF-8';
 
-    $mail->setFrom('unisierraportal@gmail.com');
-    $mail->addAddress('jesus_galindo29@hotmail.com');
+    $mail->setFrom('CORREO_HERE');
+    $mail->addAddress('CORREO_PARA_QUIEN_HERE');
 
     $mail->isHTML(true);
     $mail->Subject = 'prueba de correo';
