@@ -1,0 +1,22 @@
+create database login_iaa;
+use login_iaa;
+ 
+SET NAMES 'utf8mb4';
+SET CHARACTER SET utf8mb4;
+ALTER DATABASE login_iaa CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+create table Usuarios(
+id INT AUTO_INCREMENT PRIMARY KEY,
+Nombre VARCHAR(50) NOT NULL,
+Usuario varchar(29) NOT NULL,
+correo varchar(255) NOT NULL,
+Password varchar(255) NOT NULL,
+tipo_usuario ENUM('admin', 'usuario') NOT NULL,
+codigo varchar(10) null,
+verificado bool null
+);
+
+INSERT INTO Usuarios values(1,'Anthony','SkullCode','jesus_galindo29@hotmail.com','chuchinj002911','admin','',0);
+INSERT INTO Usuarios values(2,'Soraya','soraji','a19050036@unisierra.edu.mx','soraji27','usuario','',0);
+
+select * from Usuarios;
