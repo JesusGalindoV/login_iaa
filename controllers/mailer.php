@@ -8,6 +8,16 @@ use PHPMailer\PHPMailer\Exception;
     require '../main_app/conexion.php';
     require 'verification_code_generator.php';
 
+    require('../vendor/autoload.php');
+
+    $dotenv = Dotenv\Dotenv::createImmutable('../');
+    $dotenv->load();
+
+    $mail_host = $_ENV['MAIL_HOST'];
+    $mail_username = $_ENV['MAIL_USERNAME'];
+    $mail_password = $_ENV['MAIL_PASSWORD'];
+    $mail_port = $_ENV['MAIL_PORT'];
+
     session_start();
 
     $mail = new PHPMailer(true);
@@ -18,16 +28,16 @@ use PHPMailer\PHPMailer\Exception;
         //Server settings
         // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
         $mail->isSMTP();                                            //Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
+        $mail->Host       = $mail_host;                       //Set the SMTP server to send through
         $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-        $mail->Username   = 'unisierraportal@gmail.com';
-        $mail->Password   = 'xfctdkqytdxleeay'; 
+        $mail->Username   = $mail_username;
+        $mail->Password   = $mail_password; 
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable implicit TLS encryption                   
-        $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->Port       = $mail_port;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
         $mail->CharSet = 'UTF-8';
 
-        $mail->setFrom('unisierraportal@gmail.com');
+        $mail->setFrom($mail_username);
         $mail->addAddress($_SESSION["correo"]);
 
         $mail->isHTML(true);
