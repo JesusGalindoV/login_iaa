@@ -4,38 +4,52 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require '../vendor/autoload.php';
+    require '../vendor/autoload.php';
+    require '../main_app/conexion.php';
+    require 'verification_code_generator.php';
 
-$mail = new PHPMailer(true);
+    require('../vendor/autoload.php');
 
-$verification_code = rand(999,10000);
+    $dotenv = Dotenv\Dotenv::createImmutable('../');
+    $dotenv->load();
 
-try {
-    //Server settings
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
-    $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
-    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'CORREO_HERE';
-    $mail->Password   = 'PASSWORD_HERE'; 
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable implicit TLS encryption                   
-    $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+    $mail_host = $_ENV['MAIL_HOST'];
+    $mail_username = $_ENV['MAIL_USERNAME'];
+    $mail_password = $_ENV['MAIL_PASSWORD'];
+    $mail_port = $_ENV['MAIL_PORT'];
 
-    $mail->CharSet = 'UTF-8';
+    session_start();
 
-    $mail->setFrom('CORREO_HERE');
-    $mail->addAddress('CORREO_PARA_QUIEN_HERE');
+    $mail = new PHPMailer(true);
 
-    $mail->isHTML(true);
-    $mail->Subject = 'prueba de correo';
-    $mensaje = "Comprueba tu identidad, tú codigo de verificacion es: {$verification_code}";
-    $mail->Body    = $mensaje;
-    // $mail->Body    = 'This is the HTML message body <b>in bold!</b> {$verification_code}';
-    $mail->send();
+    $verification_code = code();
 
-    echo 'correo enviado';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-}
+    try {
+        //Server settings
+        // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();                                            //Send using SMTP
+        $mail->Host       = $mail_host;                       //Set the SMTP server to send through
+        $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+        $mail->Username   = $mail_username;
+        $mail->Password   = $mail_password; 
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         //Enable implicit TLS encryption                   
+        $mail->Port       = $mail_port;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
+        $mail->CharSet = 'UTF-8';
 
+        $mail->setFrom($mail_username);
+        $mail->addAddress($_SESSION["correo"]);
+
+        $mail->isHTML(true);
+        $mail->Subject = 'prueba de correo';
+        $mensaje = "Comprueba tu identidad, tú codigo de verificacion es: {$verification_code}";
+        $mail->Body    = $mensaje;
+        // $mail->Body    = 'This is the HTML message body <b>in bold!</b> {$verification_code}';
+        $mail->send();
+
+        header("Location: ../index.php");
+
+        // echo 'correo enviado';
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }

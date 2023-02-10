@@ -15,15 +15,15 @@
 	
     <div id="particles-js"></div>
     
-    <div class="error">
+    <!-- <div class="error">
         <span>Datos de Ingreso no válidos, intentalo de nuevo</span>
-    </div>
+    </div> -->
 
     <section class="home">
         <div class="login-box">
             <img class="avatar" src="img/yoxd.jpg" alt="Jesús Antonio">
             <h1>Information Security</h1><br>
-            <form action="" id="formlg">
+            <form action="POST" id="formlg">
                 
                 <!-- Username -->
                 <label for="Username">Username</label>

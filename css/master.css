@@ -93,3 +93,51 @@ body {
 .login-box a:hover {
     color: #fff
 }
+
+.login-box input[type="number"] {
+    border: none;
+    border-bottom: 1px solid #fff;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.no-verified{
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+}
+
+.send-code{
+    text-align: center !important;
+    color: #FFFFFF !important;
+    margin-bottom: 20px !important;
+    background-color: #0990ea;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+}
+
+.code-error{
+    text-align: center;
+    color: #FFFFFF;
+    padding-top: 100px;
+}
+
+.btn-volver{
+    position: absolute;
+    text-decoration: none;
+    text-align: center !important;
+    color: #FFFFFF;
+    background-color: #ff2424;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    left: 50%;
+    transform: translate(-50%) !important;
+    padding-left: 40px;
+    letter-spacing: 3px;
+    padding-right: 40px;
+}

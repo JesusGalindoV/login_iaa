@@ -13,6 +13,7 @@ particlesJS.load('particles-js', 'particles.json', function() {
 
 $(document).ready(function() {
 
+// Login
 $(document).on('submit','#formlg', function(event) {
   event.preventDefault();
 
@@ -22,18 +23,32 @@ $(document).on('submit','#formlg', function(event) {
     dataType: 'json',
     data: $(this).serialize(),
     beforeSend: function() {
-      $('.botonlg').val('Validando...');
+      $('.botonlg').val('validating...');
 
     }
   })
   .done(function(respuesta) {
     console.log(respuesta);
     if(!respuesta.error){
+
       if(respuesta.tipo == 'admin'){
-        location.href = './main_app/admin/';
+
+        if(respuesta.verificado == 1){
+          location.href = './main_app/admin/';
+        }else {
+          location.href = './main_app/views/no-verificado.php';
+        }
+
       } else if(respuesta.tipo == 'usuario'){
-        location.href = './main_app/usuario/';
+
+        if(respuesta.verificado == 1){
+          location.href = './main_app/usuario/';
+        }else {
+          location.href = './main_app/views/no-verificado.php';
+        }
+
       }
+
     }else {
       $('.error').slideDown('slow');
       setTimeout(function(){
@@ -51,8 +66,6 @@ $(document).on('submit','#formlg', function(event) {
 });
 
 });
-
-
 
 particlesJS('particles-js',
   
